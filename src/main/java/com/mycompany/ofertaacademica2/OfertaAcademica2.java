@@ -28,8 +28,7 @@ public class OfertaAcademica2 {
                     U.gestionarFacu();
                     break;
                 case 2:
-                    U.mostrar();
-//                    U.gestionarCarrera();
+                    U.gestionarCarr();
                     break;
                 case 3:
                     

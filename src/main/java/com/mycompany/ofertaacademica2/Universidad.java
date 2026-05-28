@@ -58,11 +58,11 @@ public class Universidad {
         mostrarFacu();
         System.out.println("");
         System.out.print("ingrese numero de facultad: ");
-        int n=sc.nextInt();
+        int n = sc.nextInt();
         for (int i = 0; i < nroFacultades; i++) {
-            if (i+1==n) {
-                for (int j=i; j < nroFacultades; j++) {
-                    facultades[j]=facultades[j+1];
+            if (i + 1 == n) {
+                for (int j = i; j < nroFacultades; j++) {
+                    facultades[j] = facultades[j + 1];
                 }
                 nroFacultades--;
             }
@@ -96,5 +96,56 @@ public class Universidad {
                     break;
             }
         }
+    }
+
+    public boolean verificarFacu(int x) {
+
+        for (int i = 0; i < nroFacultades; i++) {
+            if (i + 1 == x) {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+    public void gestionarCarr() {
+        //Especificar la facultad
+        mostrarFacu();
+        System.out.println("");
+        System.out.print("Ingrese Nro de facultad: ");
+        int x = sc.nextInt();
+
+        if (verificarFacu(x)) {
+            boolean sw = true;
+            while (sw) {
+                System.out.println(" ");
+                System.out.println("   1  : Mostrar Carreras");
+                System.out.println("   2  : Agregar Carreras");
+                System.out.println("   3  : Eliminar Carreras");
+                System.out.println("   0  : volver");
+                System.out.println(" ");
+                System.out.print("elige una opcion: ");
+                int w = sc.nextInt();
+                switch (w) {
+                    case 0:
+                        sw = false;
+                        break;
+                    case 1:
+                        facultades[x].mostrarCarr();
+                        break;
+                    case 2:
+                        facultades[x].leerCarr();
+                        break;
+                    case 3:
+                        facultades[x].eliminarCarr();
+                    default:
+                        break;
+                }
+            }
+        }
+        else
+            System.out.println("No existe la facultad...");
+
     }
 }

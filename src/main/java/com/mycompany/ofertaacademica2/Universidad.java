@@ -92,6 +92,7 @@ public class Universidad {
                     break;
                 case 3:
                     eliminarFacu();
+                    break;
                 default:
                     break;
             }
@@ -99,18 +100,15 @@ public class Universidad {
     }
 
     public boolean verificarFacu(int x) {
-
         for (int i = 0; i < nroFacultades; i++) {
             if (i + 1 == x) {
                 return true;
             }
         }
         return false;
-
     }
 
     public void gestionarCarr() {
-        //Especificar la facultad
         mostrarFacu();
         System.out.println("");
         System.out.print("Ingrese Nro de facultad: ");
@@ -132,20 +130,48 @@ public class Universidad {
                         sw = false;
                         break;
                     case 1:
-                        facultades[x].mostrarCarr();
+                        facultades[x - 1].mostrarCarr();
                         break;
                     case 2:
-                        facultades[x].leerCarr();
+                        facultades[x - 1].leerCarr();
                         break;
                     case 3:
-                        facultades[x].eliminarCarr();
+                        facultades[x - 1].eliminarCarr();
+                        break;
                     default:
                         break;
                 }
             }
-        }
-        else
+        } else {
             System.out.println("No existe la facultad...");
+        }
+    }
 
+    public void adicionarConvocatoria(Convocatoria c) {
+        if (c == null) {
+            return;
+        }
+        mostrarFacu();
+        System.out.println("");
+        System.out.print("Ingrese Nro de facultad para asignar la convocatoria: ");
+        int x = sc.nextInt();
+
+        if (verificarFacu(x)) {
+            if (c instanceof Psa) {
+                facultades[x - 1].adicionarPsa((Psa) c);
+            } else if (c instanceof Prefacultativo) {
+                facultades[x - 1].adicionarPrefa((Prefacultativo) c);
+            }
+        } else {
+            System.out.println("No existe la facultad...");
+        }
+    }
+
+    public void mostrarConvocatoriasDisponibles() {
+        System.out.println("CONVOCATORIAS DISPONIBLES EN LA UMSA");
+        for (int i = 0; i < nroFacultades; i++) {
+            System.out.println("Facultad: " + facultades[i].getNombre());
+            facultades[i].mostrarConvocatorias();
+        }
     }
 }

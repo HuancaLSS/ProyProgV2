@@ -1,36 +1,55 @@
-
 package com.mycompany.ofertaacademica2;
 
-import java.util.Scanner;
-
-
 public class Carrera {
-    private String nombre, direccion, telefono;
-    private int nroSemestres;
-    Scanner sc = new Scanner(System.in);
-    
-    public Carrera(){}
-    
-    public Carrera(String n, String d, String t, int ns){
-        nombre = n;
-        direccion = d;
-        telefono = t;
-        nroSemestres = ns;
+
+    private String nombre;
+    private String id;
+    private String regimen;
+    private int duracion;
+
+    public Carrera() {
     }
-    
-    public void mostrar(){
-        System.out.println("Nombre: "+nombre+" Direccion: "+direccion+" Telefonio: "+telefono+" Nro de semestres: "+nroSemestres);
+
+    public Carrera(String nombre) {
+        this.nombre = nombre;
     }
-    
-    public void leer(){
-        System.out.println("");
-        System.out.print("Nombre: ");
-        nombre = sc.next();
-        System.out.print("Direccion: ");
-        direccion = sc.next();
-        System.out.print("Telefono: ");
-        telefono = sc.next();
-        System.out.print("nro de semestres: ");
-        nroSemestres = sc.nextInt(); 
+
+    public Carrera(String nombre, String id, String regimen, int duracion) {
+        this.nombre = nombre;
+        this.id = id;
+        this.regimen = regimen;
+        this.duracion = duracion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getRegimen() {
+        return regimen;
+    }
+
+    public void setRegimen(String regimen) {
+        this.regimen = regimen;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
     }
 }

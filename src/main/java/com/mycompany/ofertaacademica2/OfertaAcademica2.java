@@ -10,7 +10,6 @@ public class OfertaAcademica2 {
         while (sw) {
             System.out.println(" ");
             System.out.println("------------------------------------- ");
-
             System.out.println("   1  : Gestionar Facultades");
             System.out.println("   2  : Gestionar Carreras");
             System.out.println("   3  : Gestionar Convocatorias");
@@ -31,7 +30,14 @@ public class OfertaAcademica2 {
                     U.gestionarCarr();
                     break;
                 case 3:
-                    
+                    Convocatoria nuevaConvo = Convocatoria.crearConvocatoria();
+                    if (nuevaConvo != null) {
+                        U.adicionarConvocatoria(nuevaConvo); 
+                    }
+                    break;
+                case 4:
+                    U.mostrarConvocatoriasDisponibles();
+                    break;
                 default:
                     break;
             }

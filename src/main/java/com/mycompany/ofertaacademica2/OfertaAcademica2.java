@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class OfertaAcademica2 {
 
-    public static void iniciar(Universidad U) {    
+    public static void iniciar(Universidad U) {
         boolean sw = true;
         Scanner sc = new Scanner(System.in);
         while (sw) {
@@ -12,8 +12,9 @@ public class OfertaAcademica2 {
             System.out.println("------------------------------------- ");
             System.out.println("   1  : Gestionar Facultades");
             System.out.println("   2  : Gestionar Carreras");
-            System.out.println("   3  : Gestionar Convocatorias");
-            System.out.println("   4  : Ver Convocatorias Disponibles");
+            System.out.println("   3  : Gestionar Convocatorias por facultad");
+            System.out.println("   4  : Agregar Convocatoria ");
+            System.out.println("   5  : Ver Convocatorias Disponibles");
             System.out.println("   0  : salir");
             System.out.println("------------------------------------- ");
             System.out.println(" ");
@@ -30,14 +31,18 @@ public class OfertaAcademica2 {
                     U.gestionarCarr();
                     break;
                 case 3:
-                    Convocatoria nuevaConvo = Convocatoria.crearConvocatoria();
-                    if (nuevaConvo != null) {
-                        U.adicionarConvocatoria(nuevaConvo); 
-                    }
+                    U.gestionarConv(U);
                     break;
                 case 4:
+                    Convocatoria nuevaConvo = Convocatoria.crearConvocatoria();
+                    if (nuevaConvo != null) {
+                        U.adicionarConvocatoria(nuevaConvo);
+                    }
+                    break;
+                case 5:
                     U.mostrarConvocatoriasDisponibles();
                     break;
+
                 default:
                     break;
             }

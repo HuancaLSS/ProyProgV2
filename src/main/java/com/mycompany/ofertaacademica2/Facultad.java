@@ -44,7 +44,9 @@ public class Facultad {
 
     public void eliminarCarr() {
         mostrarCarr();
-        if (nroCarreras == 0) return;
+        if (nroCarreras == 0) {
+            return;
+        }
         System.out.print("Ingrese el numero de carrera a eliminar: ");
         int n = sc.nextInt();
         if (n > 0 && n <= nroCarreras) {
@@ -56,6 +58,56 @@ public class Facultad {
         }
     }
 
+    public void asignarCarr(Psa p) {
+        System.out.print("es general? (s/n): ");
+        String respuesta = sc.next();
+        String[] carr = new String[20];
+        int nro = 0;
+        if (this.nroCarreras > 0) {
+            if (respuesta.trim().equals("s")) {
+
+                for (int i = 0; i < nroCarreras; i++) {
+                    carr[i] = carreras[i].getNombre();
+                    
+                }
+                nro = nroCarreras;
+
+            }else if (respuesta.trim().equals("n")) {
+                System.out.print("Nro de carreras: ");
+                nro = sc.nextInt();
+                mostrarCarr();
+                System.out.println("");
+                System.out.println("Seleccione carreras ( Nro. )");
+                for (int i = 0; i < nro; i++) {
+                    System.out.print("Carrera Nro. " + (i+1)+ " : ");
+                    int x = sc.nextInt();
+                    carr[i] = carreras[x - 1].getNombre();
+                }
+
+            } else {
+                return;
+            }
+            p.setNroCarreras(nro);
+            p.setCarrera(carr);
+            
+
+        } else {
+            System.out.println("No existen carreras registradas...");
+        }
+    }
+    
+    //SECCION DE CONVOCATORIAS
+
+    public int asignarMat(String materiaExamen[]) {
+        System.out.print("numero de materias a estudiar: ");
+        int nroMaterias = sc.nextInt();
+        for (int i = 0; i < nroMaterias; i++) {
+            System.out.print("Materia "+ (i+1) +" : ");
+            materiaExamen[i] = sc.next();
+        }
+        return nroMaterias;
+    }
+
     public void adicionarPsa(Psa p) {
         int i = 0;
         while (i < psa.length && psa[i] != null) {
@@ -63,7 +115,11 @@ public class Facultad {
         }
         if (i < psa.length) {
             psa[i] = p;
-            System.out.println("PSA añadida correctamente.");
+            asignarCarr(psa[i]);
+            String[] materias = new String[5];
+            psa[i].setNroMaterias(asignarMat(materias)); 
+            psa[i].setMateriaExamen(materias);
+            System.out.println("PSA añadido correctamente.");
         } else {
             System.out.println("Arreglo de PSA lleno.");
         }
@@ -81,14 +137,14 @@ public class Facultad {
             System.out.println("Arreglo de Prefacultativos lleno.");
         }
     }
-    
+
     public String getNombre() {
         return nombre;
     }
 
     public void mostrarConvocatorias() {
         boolean tieneConvocatorias = false;
-        
+
         for (int i = 0; i < psa.length; i++) {
             if (psa[i] != null) {
                 System.out.println("[Tipo: Examen PSA]");
@@ -96,7 +152,7 @@ public class Facultad {
                 tieneConvocatorias = true;
             }
         }
-        
+
         for (int i = 0; i < prefas.length; i++) {
             if (prefas[i] != null) {
                 System.out.println("[Tipo: Curso Prefacultativo]");
@@ -104,7 +160,7 @@ public class Facultad {
                 tieneConvocatorias = true;
             }
         }
-        
+
         if (!tieneConvocatorias) {
             System.out.println("  No hay convocatorias vigentes en esta facultad.");
         }

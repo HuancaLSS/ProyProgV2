@@ -39,7 +39,8 @@ public class Universidad {
 
     public void mostrarFacu() {
         for (int i = 0; i < nroFacultades; i++) {
-            System.out.print(i + 1 + " ");
+            System.out.print("  "+ (i+1) + " ");
+            //System.out.printf(" %d   ",i+1);
             facultades[i].mostrar();
         }
     }
@@ -137,6 +138,52 @@ public class Universidad {
                         break;
                     case 3:
                         facultades[x - 1].eliminarCarr();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        } else {
+            System.out.println("No existe la facultad...");
+        }
+    }
+
+    public void gestionarConv(Universidad U) {
+        U.mostrarFacu();
+        System.out.println("");
+        System.out.print("Ingrese Nro de facultad: ");
+        int x = sc.nextInt();
+
+        if (U.verificarFacu(x)) {
+            boolean sw = true;
+            while (sw) {
+                System.out.println(" ");
+                System.out.println("   1  : Mostrar Convocatorias");
+                System.out.println("   2  : Agregar Convocatoria");
+                System.out.println("   3  : Eliminar Convocatoria");
+                System.out.println("   0  : volver");
+                System.out.println(" ");
+                System.out.print("elige una opcion: ");
+                int w = sc.nextInt();
+                switch (w) {
+                    case 0:
+                        sw = false;
+                        break;
+                    case 1:
+                        facultades[x - 1].mostrarConvocatorias();
+                        break;
+                    case 2:
+                        Convocatoria c = Convocatoria.crearConvocatoria();
+                        if (c != null) {
+                            if (c instanceof Psa) {
+                                facultades[x - 1].adicionarPsa((Psa) c);
+                            } else if (c instanceof Prefacultativo) {
+                                facultades[x - 1].adicionarPrefa((Prefacultativo) c);
+                            }
+                        }
+                        break;
+                    case 3:
+                        //facultades[x - 1].eliminarConv();
                         break;
                     default:
                         break;

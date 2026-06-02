@@ -25,7 +25,8 @@ public class Convocatoria {
         direccion = sc.next();
         System.out.print("costo: ");
         costo = sc.nextInt();
-        
+        semestre = 1;
+        gestion = 2026;
         requisitos[0] = "ci";
         requisitos[1] = "certificado de Nacimiento";
         requisitos[2] = "foto 3x3";
@@ -62,6 +63,7 @@ public class Convocatoria {
     }
 
     public void mostrar() {
+        System.out.println("");
         System.out.println("Gestion:             " + gestion);
         System.out.println("Semestre:            " + semestre);
         System.out.println("Inicio Inscripcion:  " + inicioInscripcion);

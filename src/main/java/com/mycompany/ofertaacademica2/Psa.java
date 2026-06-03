@@ -7,7 +7,6 @@ public class Psa extends Convocatoria {
     private String fechaExamen;
     private int nroMaterias;
     private String materiaExamen[] = new String[5];
-    //private String cronograma[][] = new String[5][5];
     private int nroCarreras;
     private String carrera[] = new String[20];
     Scanner sc = new Scanner(System.in);
@@ -54,16 +53,6 @@ public class Psa extends Convocatoria {
         super.leer();
         System.out.print("fecha de examen : ");
         fechaExamen = sc.next();
-
-//        System.out.print("es general? (s/n): ");
-//        String respuesta = sc.next();
-//        if (respuesta.equalsIgnoreCase("s")) {
-//            esGeneral = true;
-//        } else {
-//            esGeneral = false;
-//        }
-//        System.out.print("numero de carreras: ");
-//        nroCarreras = sc.nextInt();
     }
 
     public void mostrar() {

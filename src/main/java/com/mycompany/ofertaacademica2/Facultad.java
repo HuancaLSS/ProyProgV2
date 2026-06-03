@@ -68,18 +68,18 @@ public class Facultad {
 
                 for (int i = 0; i < nroCarreras; i++) {
                     carr[i] = carreras[i].getNombre();
-                    
+
                 }
                 nro = nroCarreras;
 
-            }else if (respuesta.trim().equals("n")) {
+            } else if (respuesta.trim().equals("n")) {
                 System.out.print("Nro de carreras: ");
                 nro = sc.nextInt();
                 mostrarCarr();
                 System.out.println("");
                 System.out.println("Seleccione carreras ( Nro. )");
                 for (int i = 0; i < nro; i++) {
-                    System.out.print("Carrera Nro. " + (i+1)+ " : ");
+                    System.out.print("Carrera Nro. " + (i + 1) + " : ");
                     int x = sc.nextInt();
                     carr[i] = carreras[x - 1].getNombre();
                 }
@@ -89,20 +89,18 @@ public class Facultad {
             }
             p.setNroCarreras(nro);
             p.setCarrera(carr);
-            
 
         } else {
             System.out.println("No existen carreras registradas...");
         }
     }
-    
-    //SECCION DE CONVOCATORIAS
 
+    //SECCION DE CONVOCATORIAS
     public int asignarMat(String materiaExamen[]) {
         System.out.print("numero de materias a estudiar: ");
         int nroMaterias = sc.nextInt();
         for (int i = 0; i < nroMaterias; i++) {
-            System.out.print("Materia "+ (i+1) +" : ");
+            System.out.print("Materia " + (i + 1) + " : ");
             materiaExamen[i] = sc.next();
         }
         return nroMaterias;
@@ -117,7 +115,7 @@ public class Facultad {
             psa[i] = p;
             asignarCarr(psa[i]);
             String[] materias = new String[5];
-            psa[i].setNroMaterias(asignarMat(materias)); 
+            psa[i].setNroMaterias(asignarMat(materias));
             psa[i].setMateriaExamen(materias);
             System.out.println("PSA añadido correctamente.");
         } else {
@@ -163,6 +161,57 @@ public class Facultad {
 
         if (!tieneConvocatorias) {
             System.out.println("  No hay convocatorias vigentes en esta facultad.");
+        }
+    }
+
+    public void eliminarConv(int tipo) {
+        if (tipo == 1) { // esto es para el psa
+            int totalPsa = 0;
+            System.out.println("Convocatorias PSA Disponibles: ");
+            System.out.println("");
+            for (int i = 0; i < psa.length; i++) {
+                if (psa[i] != null) {
+                    System.out.println("Convocatoria PSA Numero: [" + (i + 1) + "]");
+                    totalPsa++;
+                }
+            }
+            if (totalPsa == 0) {
+                System.out.println("No hay convocatorias PSA para eliminar.");
+                return;
+            }
+            System.out.print("Ingrese el numero de la convocatoria PSA a eliminar: ");
+            int pos = sc.nextInt() - 1;
+
+            if (pos >= 0 && pos < psa.length && psa[pos] != null) {
+                psa[pos] = null;
+                System.out.println("Convocatoria PSA eliminada con exito.");
+            } else {
+                System.out.println("Numero de convocatoria no válido.");
+            }
+        } else if (tipo == 2) { // para el prefa
+            int totalPrefas = 0;
+            System.out.println("Convocatorias Prefacultativos Disponibles: ");
+            for (int i = 0; i < prefas.length; i++) {
+                if (prefas[i] != null) {
+                    System.out.println("Convocatoria Prefacultativo Numero: [" + (i + 1) + "]");
+                    totalPrefas++;
+                }
+            }
+            if (totalPrefas == 0) {
+                System.out.println("No hay convocatorias de Prefacultativos para eliminar.");
+                return;
+            }
+            System.out.print("Ingrese el numero del Prefacultativo a eliminar: ");
+            int pos = sc.nextInt() - 1;
+
+            if (pos >= 0 && pos < prefas.length && prefas[pos] != null) {
+                prefas[pos] = null;
+                System.out.println("Convocatoria de Prefacultativo eliminada con exito.");
+            } else {
+                System.out.println("Numero de convocatoria no valido.");
+            }
+        } else {
+            System.out.println("Tipo de convocatoria no valido.");
         }
     }
 }

@@ -64,13 +64,13 @@ public class Convocatoria {
 
     public void mostrar() {
         System.out.println("");
-        System.out.println("Gestion:             " + gestion);
-        System.out.println("Semestre:            " + semestre);
-        System.out.println("Inicio Inscripcion:  " + inicioInscripcion);
-        System.out.println("Fin Inscripcion:     " + finInscripcion);
-        System.out.println("Telefono:            " + telefono);
-        System.out.println("Direccion:           " + direccion);
-        System.out.println("Costo:               " + costo + " Bs.");
+        System.out.println("Gestion: " + gestion);
+        System.out.println("Semestre: " + semestre);
+        System.out.println("Inicio Inscripcion: " + inicioInscripcion);
+        System.out.println("Fin Inscripcion: " + finInscripcion);
+        System.out.println("Telefono: " + telefono);
+        System.out.println("Direccion: " + direccion);
+        System.out.println("Costo: " + costo + " Bs.");
         System.out.println("Requisitos:");
 
         for (int i = 0; i < requisitos.length; i++) {

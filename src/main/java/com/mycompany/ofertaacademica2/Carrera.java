@@ -7,9 +7,9 @@ public class Carrera {
     private String regimen;
     private int duracion;
 
-    public Carrera() {
-    }
-
+//    public Carrera() {
+//    }
+//
     public Carrera(String nombre) {
         this.nombre = nombre;
     }

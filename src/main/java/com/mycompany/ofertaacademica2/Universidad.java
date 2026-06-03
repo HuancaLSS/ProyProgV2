@@ -39,7 +39,7 @@ public class Universidad {
 
     public void mostrarFacu() {
         for (int i = 0; i < nroFacultades; i++) {
-            System.out.print("  "+ (i+1) + " ");
+            System.out.print("  " + (i + 1) + " ");
             //System.out.printf(" %d   ",i+1);
             facultades[i].mostrar();
         }
@@ -183,7 +183,13 @@ public class Universidad {
                         }
                         break;
                     case 3:
-                        //facultades[x - 1].eliminarConv();
+                        System.out.println("ELIMINAR CONVOCATORIA");
+                        System.out.println("");
+                        System.out.println(" 1 : Eliminar un Examen PSA");
+                        System.out.println(" 2 : Eliminar un Curso Prefacultativo");
+                        System.out.print("Elija el tipo a eliminar: ");
+                        int tipoDel = sc.nextInt();
+                        facultades[x - 1].eliminarConv(tipoDel);
                         break;
                     default:
                         break;

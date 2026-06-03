@@ -40,7 +40,6 @@ public class Universidad {
     public void mostrarFacu() {
         for (int i = 0; i < nroFacultades; i++) {
             System.out.print("  " + (i + 1) + " ");
-            //System.out.printf(" %d   ",i+1);
             facultades[i].mostrar();
         }
     }

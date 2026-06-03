@@ -183,7 +183,7 @@ public class Universidad {
                         }
                         break;
                     case 3:
-                        //facultades[x - 1].eliminarConv();
+                        facultades[x - 1].eliminarConvocatoria();
                         break;
                     default:
                         break;

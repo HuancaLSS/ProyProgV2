@@ -1,4 +1,4 @@
-package com.mycompany.ofertaacademica2;
+package OfertaAcademica;
 
 public class Carrera {
 

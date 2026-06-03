@@ -1,6 +1,8 @@
-package com.mycompany.ofertaacademica2;
+package OfertaAcademica;
 
 import java.util.Scanner;
+import Grafica.Principal;
+import javax.swing.SwingUtilities;
 
 public class OfertaAcademica2 {
 
@@ -51,8 +53,12 @@ public class OfertaAcademica2 {
 
     public static void main(String[] args) {
         Universidad U = new Universidad();
-
-        iniciar(U);
+        //iniciar(U);
+        SwingUtilities.invokeLater(() -> {
+            new Principal(U).setVisible(true);
+        });
+//        Principal t1=new Principal();
+//        t1.setVisible(true);
 
     }
 }

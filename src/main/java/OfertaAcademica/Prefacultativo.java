@@ -1,4 +1,4 @@
-package com.mycompany.ofertaacademica2;
+package OfertaAcademica;
 
 import java.util.Scanner;
 

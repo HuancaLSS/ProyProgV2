@@ -1,4 +1,4 @@
-package com.mycompany.ofertaacademica2;
+package OfertaAcademica;
 
 import java.util.*;
 
@@ -8,6 +8,10 @@ public class Universidad {
     private int nroFacultades;
     private Facultad[] facultades;
     Scanner sc = new Scanner(System.in);
+
+    public void Prueba() {
+        System.out.println("xd");
+    }
 
     public Universidad() {
         nombre = "Universidad mayor de San Andres";

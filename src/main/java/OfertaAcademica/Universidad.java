@@ -1,13 +1,17 @@
 package OfertaAcademica;
 
 import java.util.*;
+import java.io.*;
 
-public class Universidad {
+public class Universidad implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String nombre;
     private int nroFacultades;
     private Facultad[] facultades;
-    Scanner sc = new Scanner(System.in);
+
+    transient Scanner sc = new Scanner(System.in);
 
     public void Prueba() {
         System.out.println("xd");
@@ -54,27 +58,34 @@ public class Universidad {
         String nom = sc.next();
         System.out.print("direccion: ");
         String direc = sc.next();
+
         facultades[nroFacultades] = new Facultad(nom, direc);
         nroFacultades++;
     }
 
     public void eliminarFacu() {
         mostrarFacu();
+
         System.out.println("");
         System.out.print("ingrese numero de facultad: ");
         int n = sc.nextInt();
+
         for (int i = 0; i < nroFacultades; i++) {
             if (i + 1 == n) {
-                for (int j = i; j < nroFacultades; j++) {
+                for (int j = i; j < nroFacultades - 1; j++) {
                     facultades[j] = facultades[j + 1];
                 }
+
+                facultades[nroFacultades - 1] = null;
                 nroFacultades--;
+                break;
             }
         }
     }
 
     public void gestionarFacu() {
         boolean sw = true;
+
         while (sw) {
             System.out.println(" ");
             System.out.println("   1  : Mostrar Facultades");
@@ -83,20 +94,26 @@ public class Universidad {
             System.out.println("   0  : volver");
             System.out.println(" ");
             System.out.print("elige una opcion: ");
+
             int x = sc.nextInt();
+
             switch (x) {
                 case 0:
                     sw = false;
                     break;
+
                 case 1:
                     mostrarFacu();
                     break;
+
                 case 2:
                     leerFacu();
                     break;
+
                 case 3:
                     eliminarFacu();
                     break;
+
                 default:
                     break;
             }
@@ -114,12 +131,14 @@ public class Universidad {
 
     public void gestionarCarr() {
         mostrarFacu();
+
         System.out.println("");
         System.out.print("Ingrese Nro de facultad: ");
         int x = sc.nextInt();
 
         if (verificarFacu(x)) {
             boolean sw = true;
+
             while (sw) {
                 System.out.println(" ");
                 System.out.println("   1  : Mostrar Carreras");
@@ -128,20 +147,26 @@ public class Universidad {
                 System.out.println("   0  : volver");
                 System.out.println(" ");
                 System.out.print("elige una opcion: ");
+
                 int w = sc.nextInt();
+
                 switch (w) {
                     case 0:
                         sw = false;
                         break;
+
                     case 1:
                         facultades[x - 1].mostrarCarr();
                         break;
+
                     case 2:
                         facultades[x - 1].leerCarr();
                         break;
+
                     case 3:
                         facultades[x - 1].eliminarCarr();
                         break;
+
                     default:
                         break;
                 }
@@ -153,12 +178,14 @@ public class Universidad {
 
     public void gestionarConv(Universidad U) {
         U.mostrarFacu();
+
         System.out.println("");
         System.out.print("Ingrese Nro de facultad: ");
         int x = sc.nextInt();
 
         if (U.verificarFacu(x)) {
             boolean sw = true;
+
             while (sw) {
                 System.out.println(" ");
                 System.out.println("   1  : Mostrar Convocatorias");
@@ -167,16 +194,21 @@ public class Universidad {
                 System.out.println("   0  : volver");
                 System.out.println(" ");
                 System.out.print("elige una opcion: ");
+
                 int w = sc.nextInt();
+
                 switch (w) {
                     case 0:
                         sw = false;
                         break;
+
                     case 1:
                         facultades[x - 1].mostrarConvocatorias();
                         break;
+
                     case 2:
                         Convocatoria c = Convocatoria.crearConvocatoria();
+
                         if (c != null) {
                             if (c instanceof Psa) {
                                 facultades[x - 1].adicionarPsa((Psa) c);
@@ -185,15 +217,19 @@ public class Universidad {
                             }
                         }
                         break;
+
                     case 3:
                         System.out.println("ELIMINAR CONVOCATORIA");
                         System.out.println("");
                         System.out.println(" 1 : Eliminar un Examen PSA");
                         System.out.println(" 2 : Eliminar un Curso Prefacultativo");
                         System.out.print("Elija el tipo a eliminar: ");
+
                         int tipoDel = sc.nextInt();
+
                         facultades[x - 1].eliminarConv(tipoDel);
                         break;
+
                     default:
                         break;
                 }
@@ -207,9 +243,12 @@ public class Universidad {
         if (c == null) {
             return;
         }
+
         mostrarFacu();
+
         System.out.println("");
         System.out.print("Ingrese Nro de facultad para asignar la convocatoria: ");
+
         int x = sc.nextInt();
 
         if (verificarFacu(x)) {
@@ -225,9 +264,16 @@ public class Universidad {
 
     public void mostrarConvocatoriasDisponibles() {
         System.out.println("CONVOCATORIAS DISPONIBLES EN LA UMSA");
+
         for (int i = 0; i < nroFacultades; i++) {
             System.out.println("Facultad: " + facultades[i].getNombre());
             facultades[i].mostrarConvocatorias();
         }
+    }
+    private void readObject(ObjectInputStream in)
+            throws IOException, ClassNotFoundException {
+
+        in.defaultReadObject();
+        sc = new Scanner(System.in);
     }
 }

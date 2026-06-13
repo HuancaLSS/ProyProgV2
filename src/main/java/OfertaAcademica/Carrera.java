@@ -1,20 +1,22 @@
 package OfertaAcademica;
 
-public class Carrera {
+import java.io.Serializable;
+
+public class Carrera implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String nombre;
     private String id;
     private String regimen;
-    private int duracion;
+    private String duracion;
 
-//    public Carrera() {
-//    }
-//
-    public Carrera(String nombre) {
+    public Carrera(String nombre, String duracion) {
         this.nombre = nombre;
+        this.duracion = duracion;
     }
 
-    public Carrera(String nombre, String id, String regimen, int duracion) {
+    public Carrera(String nombre, String id, String regimen, String duracion) {
         this.nombre = nombre;
         this.id = id;
         this.regimen = regimen;
@@ -45,11 +47,11 @@ public class Carrera {
         this.regimen = regimen;
     }
 
-    public int getDuracion() {
+    public String getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(int duracion) {
+    public void setDuracion(String duracion) {
         this.duracion = duracion;
     }
 }

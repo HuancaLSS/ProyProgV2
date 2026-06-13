@@ -4,15 +4,20 @@ import java.util.Scanner;
 
 public class Psa extends Convocatoria {
 
+    private static final long serialVersionUID = 1L;
+
+    transient Scanner sc = new Scanner(System.in);
+
     private String fechaExamen;
+
     private int nroMaterias;
     private String materiaExamen[] = new String[5];
+
     private int nroCarreras;
     private String carrera[] = new String[20];
-    Scanner sc = new Scanner(System.in);
+
 
     public Psa() {
-
     }
 
     public String[] getCarrera() {
@@ -46,30 +51,33 @@ public class Psa extends Convocatoria {
     public void setNroMaterias(int nroMaterias) {
         this.nroMaterias = nroMaterias;
     }
-    
 
+    @Override
     public void leer() {
-        System.out.println("");
+
         super.leer();
-        System.out.print("fecha de examen : ");
+
+        System.out.print("fecha de examen: ");
         fechaExamen = sc.next();
     }
 
+    @Override
     public void mostrar() {
-        super.mostrar();
-        System.out.println("Fecha Examen: " + fechaExamen);
-//        System.out.println("Es General: " + esGeneral);
-//        System.out.println("Numero de Carreras: " + nroCarreras);
-        System.out.println("Carreras:");
-        for (int i = 0; i < nroCarreras; i++) {
-            System.out.print("  - " + carrera[i]);
-        }
-        System.out.println("");
-        System.out.println("Materias del Examen:");
-        for (int i = 0; i < nroMaterias ; i++) {
-            System.out.print("  - " + materiaExamen[i]);
-        }
-        System.out.println("");
-    }
 
+        super.mostrar();
+
+        System.out.println("Fecha Examen: " + fechaExamen);
+
+        System.out.println("Carreras:");
+
+        for (int i = 0; i < nroCarreras; i++) {
+            System.out.println("- " + carrera[i]);
+        }
+
+        System.out.println("Materias:");
+
+        for (int i = 0; i < nroMaterias; i++) {
+            System.out.println("- " + materiaExamen[i]);
+        }
+    }
 }

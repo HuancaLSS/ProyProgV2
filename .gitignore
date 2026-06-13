@@ -1,0 +1,11 @@
+# Archivos compilados
+target/
+
+# Archivos de persistencia
+*.dat
+
+# Configuración local de NetBeans
+nbactions.xml
+
+# Archivos temporales del sistema
+*.class
